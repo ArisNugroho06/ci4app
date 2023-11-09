@@ -19,31 +19,23 @@ class Filters extends BaseConfig
      *                                               or [filter_name => [classname1, classname2, ...]]
      * @phpstan-var array<string, class-string|list<class-string>>
      */
-    public array $aliases = [
-        'csrf'          => CSRF::class,
-        'toolbar'       => DebugToolbar::class,
-        'honeypot'      => Honeypot::class,
-        'invalidchars'  => InvalidChars::class,
-        'secureheaders' => SecureHeaders::class,
+    public $aliases = [
+        'csrf'     => \CodeIgniter\Filters\CSRF::class,
+        'toolbar'  => \CodeIgniter\Filters\DebugToolbar::class,
+        'honeypot' => \CodeIgniter\Filters\Honeypot::class,
+        'auth' => \App\Filters\Auth::class,
     ];
 
-    /**
-     * List of filter aliases that are always
-     * applied before and after every request.
-     *
-     * @var array<string, array<string, array<string, string>>>|array<string, array<string>>
-     * @phpstan-var array<string, list<string>>|array<string, array<string, array<string, string>>>
-     */
-    public array $globals = [
+    // Always applied before every request
+    public $globals = [
         'before' => [
-            // 'honeypot',
+            //'honeypot'
             // 'csrf',
-            // 'invalidchars',
+            'auth' => ['except' => 'auth/*']
         ],
-        'after' => [
+        'after'  => [
             'toolbar',
-            // 'honeypot',
-            // 'secureheaders',
+            //'honeypot'
         ],
     ];
 
