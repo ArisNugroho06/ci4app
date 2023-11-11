@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Controllers;
 
 class Auth extends BaseController
@@ -10,17 +11,17 @@ class Auth extends BaseController
 		$this->session = session();
 	}
 
-	public function register(){
+	public function register()
+	{
 
-		if($this->request->getPost())
-		{
+		if ($this->request->getPost()) {
 			//lakukan validasi untuk data yang di post
 			$data = $this->request->getPost();
 			$validate = $this->validation->run($data, 'register');
 			$errors = $this->validation->getErrors();
 
 			//jika tidak ada errors jalanakan
-			if(!$errors){
+			if (!$errors) {
 				$userModel = new \App\Models\UserModel();
 
 				$user = new \App\Entities\User();
@@ -42,16 +43,15 @@ class Auth extends BaseController
 		return view('register');
 	}
 
-	public function login(){
-		if($this->request->getPost())
-		{
+	public function login()
+	{
+		if ($this->request->getPost()) {
 			//lakukan validasi untuk data yang di post
 			$data = $this->request->getPost();
 			$validate = $this->validation->run($data, 'login');
 			$errors = $this->validation->getErrors();
 
-			if($errors)
-			{
+			if ($errors) {
 				return view('login');
 			}
 
@@ -62,16 +62,15 @@ class Auth extends BaseController
 
 			$user = $userModel->where('username', $username)->first();
 
-			if($user)
-			{
+			if ($user) {
 				$salt = $user->salt;
-				if($user->password!==md5($salt.$password))
-				{
+				if ($user->password !== md5($salt . $password)) {
 					$this->session->setFlashdata('errors', ['Password Salah']);
-				}else{
+				} else {
 					$sessData = [
 						'username' => $user->username,
 						'id' => $user->id,
+						'role' => $user->role,
 						'isLoggedIn' => TRUE
 					];
 
@@ -79,7 +78,7 @@ class Auth extends BaseController
 
 					return redirect()->to(site_url('home/index'));
 				}
-			}else{
+			} else {
 				$this->session->setFlashdata('errors', ['User Tidak Ditemukan']);
 			}
 		}
