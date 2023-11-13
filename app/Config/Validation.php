@@ -145,4 +145,46 @@ class Validation extends BaseConfig
             'is_natural' => '{field} Tidak Boleh Bernilai Negatif',
         ],
     ];
+
+    public $transaksi = [
+        'id_barang' => [
+            'rules' => 'required',
+        ],
+        'id_pembeli' => [
+            'rules' => 'required',
+        ],
+        'jumlah' => [
+            'rules' => 'required',
+        ],
+        'total_harga' => [
+            'rules' => 'required',
+        ],
+        'alamat' => [
+            'rules' => 'required',
+        ],
+        'ongkir' => [
+            'rules' => 'required',
+        ],
+    ];
+
+    public $transaksi_errors = [
+        'id-barang' => [
+            'required' => '{field} Harus Diisi',
+        ],
+        'id_pembeli' => [
+            'required' => '{field} Harus Diisi',
+        ],
+        'jumlah' => [
+            'required' => '{field} Harus Diisi',
+        ],
+        'total_harga' => [
+            'required' => '{field} Harus Diisi',
+        ],
+        'alamat' => [
+            'required' => '{field} Harus Diisi',
+        ],
+        'ongkir' => [
+            'required' => '{field} Harus Diisi',
+        ],
+    ];
 }

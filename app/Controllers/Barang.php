@@ -110,9 +110,9 @@ class Barang extends BaseController
     public function delete()
     {
         $id = $this->request->uri->getSegment(3);
-
         $modelBarang = new \App\Models\BarangModel();
-        $delete = $modelBarang->delete($id);
+
+        $modelBarang = $modelBarang->where('id', $id)->delete();
 
         return redirect()->to(site_url('barang/index'));
     }

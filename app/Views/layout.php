@@ -55,6 +55,9 @@
 
   <script src="<?= base_url('bootstrap-4.0.0/dist/js/bootstrap.min.js') ?>"></script>
   <script src="<?= base_url('jquery-3.7.1.min.js') ?>"></script>
+
+  <?= $this->renderSection('script') ?>
+
 </body>
 
 </html>
