@@ -1,6 +1,6 @@
 <?= $this->extend('layout') ?>
 <?= $this->section('content') ?>
-<h4>Transaksi No <?= $transaksi->id_trans ?></h4>
+<h4>Transaksi</h4>
 <table class="table">
     <tr>
         <td>Barang</td>
@@ -24,3 +24,8 @@
     </tr>
 </table>
 <?= $this->endSection() ?>
+
+<!-- <tr>
+    <td>Nomor Transaksi</td>
+    <td><?= $transaksi->id ?></td>
+</tr> -->

@@ -5,21 +5,19 @@
 </div>
 
 <?php
-
 $id_barang = [
     'name' => 'id_barang',
     'id' => 'id_barang',
     'value' => $model->id,
-    'type' => 'hidden',
+    'type' => 'hidden'
 ];
 
 $id_pembeli = [
     'name' => 'id_pembeli',
     'id' => 'id_pembeli',
-    'value' => $model->id,
-    'type' => 'hidden',
+    'value' => session()->get('id'),
+    'type' => 'hidden'
 ];
-
 $jumlah = [
     'name' => 'jumlah',
     'id' => 'jumlah',
@@ -29,7 +27,6 @@ $jumlah = [
     'type' => 'number',
     'max' => $model->stok,
 ];
-
 $total_harga = [
     'name' => 'total_harga',
     'id' => 'total_harga',
@@ -37,7 +34,6 @@ $total_harga = [
     'class' => 'form-control',
     'readonly' => true,
 ];
-
 $ongkir = [
     'name' => 'ongkir',
     'id' => 'ongkir',
@@ -45,20 +41,19 @@ $ongkir = [
     'class' => 'form-control',
     'readonly' => true,
 ];
-
 $alamat = [
     'name' => 'alamat',
     'id' => 'alamat',
-    'value' => null,
     'class' => 'form-control',
+    'value' => null,
 ];
 
 $submit = [
     'name' => 'submit',
     'id' => 'submit',
+    'type' => 'submit',
     'value' => 'Beli',
     'class' => 'btn btn-success',
-    'type' => 'submit',
 ];
 ?>
 

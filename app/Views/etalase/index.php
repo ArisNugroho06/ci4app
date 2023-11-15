@@ -22,7 +22,6 @@
                         <a href="<?= site_url('etalase/beli/' . $m->id) ?>" style="width:100%" class="btn btn-success">Beli</a>
                     </div>
                 </div>
-
             </div>
         <?php endforeach ?>
     </div>
